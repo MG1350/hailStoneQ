@@ -4,23 +4,25 @@ public class hailStoneQ
     public static void main(String args[])
     {
         stone num;
-        Scanner input = new Scanner(System.in);
-        System.out.print("Enter an integer: ");
-        num = new stone(input.nextInt());
-        input.close();
-        System.out.print(num.getNum());
-        while(num.isDone())
+        int iter = 1;
+        for(int i = 0; i < 200; i++)
         {
-            if(num.isEven())
+            num = new stone(iter);
+            System.out.println(num.getNum());
+            while(num.isDone())
             {
-                num.forEven();
-                System.out.print(", "+ num.getNum());
+                if(num.isEven())
+                {
+                    num.forEven();
+                    System.out.print(", "+ num.getNum());
+                }
+                else
+                {
+                    num.forOdd();
+                    System.out.print(", "+ num.getNum());
+                }
             }
-            else
-            {
-                num.forOdd();
-                System.out.print(", "+ num.getNum());
-            }
+            iter++;
         }
     }
 }
@@ -66,5 +68,9 @@ class stone
     public int getNum()
     {
         return num;
+    }
+    public void setNum(int input)
+    {
+        num = input;
     }
 }
